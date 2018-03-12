@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-sm-3">
+    {{version}}
+  </div>
+  <div class="col-sm-3">
+    {{ihl}}
+  </div>
+  <div class="col-sm-3">
+    {{diff}}
+  </div>
+  <div class="col-sm-3">
+    {{tLength}}
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    {{identification}}
+  </div>
+  <div class="col-sm-4">
+    {{flags}}
+  </div>
+  <div class="col-sm-1">
+    {{fOffset}}
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-3">
+    {{ttl}}
+  </div>
+  <div class="col-sm-3">
+    {{protocol}}
+  </div>
+  <div class="col-sm-3">
+    {{hChecksum}}
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    {{source}}
+  </div>
+  <div class="col-sm-12">
+    {{destination}}
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-8">
+    {{options}}
+  </div>
+  <div class="col-sm-4">
+    {{padding}}
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12" *ngIf="protocol == 'Protocolo: 6 TCP'">
+    <hr>
+    <h2>TCP Content</h2>
+    <app-tcp [tcp]="datagramContent"></app-tcp>
+  </div>
+  <div class="col-sm-12" *ngIf="protocol == 'Protocolo: 17 UDP'">
+    <hr>
+    <h2>UDP Content</h2>
+    <app-udp [udp]="datagramContent"></app-udp>
+  </div>
+</div>
