@@ -27,6 +27,10 @@ export class UploaderComponent implements OnInit {
     });
   }
 
+  clearFile() {
+
+  }
+
   onSubmit() {
     const formModel = this.form.value;
 
