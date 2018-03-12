@@ -2,6 +2,9 @@
   "name": "unpacker",
   "version": "0.0.0",
   "license": "MIT",
+  "engines": {
+    "node": "8.9.1"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -12,6 +15,8 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/cli": "^1.6.7",
+    "@angular/compiler-cli": "^5.2.8",
     "@angular/animations": "^5.2.0",
     "@angular/common": "^5.2.0",
     "@angular/compiler": "^5.2.0",
@@ -26,11 +31,14 @@
     "jquery": "^3.3.1",
     "popper.js": "^1.12.9",
     "rxjs": "^5.5.6",
-    "zone.js": "^0.8.19"
+    "zone.js": "^0.8.19",
+    "ts-node": "~4.1.0",
+    "tslint": "~5.9.1",
+    "typescript": "~2.5.3"
   },
   "devDependencies": {
-    "@angular/cli": "1.6.7",
-    "@angular/compiler-cli": "^5.2.0",
+    "@angular/cli": "^1.6.7",
+    "@angular/compiler-cli": "^5.2.8",
     "@angular/language-service": "^5.2.0",
     "@types/jasmine": "~2.8.3",
     "@types/jasminewd2": "~2.0.2",
