@@ -42,18 +42,18 @@ export class UploaderComponent implements OnInit {
     for (i = 0; i < rawLength; i++) {
       this.array[i] = raw.charCodeAt(i);
     }
-    console.log(raw + ' array ' + this.array.length);
+    // console.log(raw + ' array ' + this.array.length);
 
     for (i = 0 ; i < this.array.length ; i++) {
-      console.log(this.array[i].toString(16));
+      // console.log(this.array[i].toString(16));
     }
 
-    console.log(this.array.length);
+    // console.log(this.array.length);
 
     this.loading = true;
     // this.http.post('apiUrl', formModel)
     setTimeout(() => {
-      console.log(formModel);
+      // console.log(formModel);
       alert('done!');
       this.loading = false;
     }, 1000);

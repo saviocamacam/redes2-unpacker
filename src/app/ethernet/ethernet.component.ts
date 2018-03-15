@@ -31,15 +31,15 @@ export class EthernetComponent implements OnInit {
     this.resetValues();
     if (this.eth) {
       const destination = this.eth.slice(0, 6);
-      console.log(destination);
+      // console.log(destination);
       this.destination = 'Destino ';
       destination.forEach(element => {
-        this.destination = this.destination.concat(element.toString(16) + ':');
+        this.destination = this.destination.concat(element.toString(16).toUpperCase() + ':');
       });
       const source = this.eth.slice(6, 12);
       this.source = 'Origem ';
       source.forEach(element => {
-        this.source = this.source.concat(element.toString(16) + ':');
+        this.source = this.source.concat(element.toString(16).toUpperCase() + ':');
       });
 
       const type = this.eth.slice(12, 14);
@@ -53,7 +53,7 @@ export class EthernetComponent implements OnInit {
         this.type = this.type.concat(' IPv4');
       }
       this.ipContent = this.eth.slice(14, this.eth.length);
-      console.log(this.destination);
+      // console.log(this.destination);
     }
   }
 

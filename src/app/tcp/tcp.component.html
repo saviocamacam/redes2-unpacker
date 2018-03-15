@@ -12,16 +12,19 @@
     {{ackNumber}}
   </div>
   <div class="col-sm-1">
-    {{offset}}
+    {{hLength}}
   </div>
   <div class="col-sm-5">
     {{flags}}
-    <h6>urg</h6>
-    <h6>ack</h6>
-    <h6>psh</h6>
-    <h6>rst</h6>
-    <h6>syn</h6>
-    <h6>fin</h6>
+    <h6 *ngIf="non != 0">non</h6>
+    <h6 *ngIf="ecn != 0">ecn</h6>
+    <h6 *ngIf="cwr != 0">cwr</h6>
+    <h6 *ngIf="urg != 0">urg</h6>
+    <h6 *ngIf="ack != 0">ack</h6>
+    <h6 *ngIf="psh != 0">psh</h6>
+    <h6 *ngIf="rst != 0">rst</h6>
+    <h6 *ngIf="syn != 0">syn</h6>
+    <h6 *ngIf="fin != 0">fin</h6>
   </div>
   <div class="col-sm-6">
     {{window}}

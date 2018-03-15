@@ -60,7 +60,7 @@ export class IpComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
     this.resetValues();
 
-    console.log(changes);
+    // console.log(changes);
     if (this.ip) {
       // version
       const oct = this.ip.slice(0)[0].toString(16);
@@ -88,13 +88,13 @@ export class IpComponent implements OnInit {
       const flags = this.ip.slice(6, 8);
       value = '';
       flags.forEach(element => {
-        value = value.concat(element.toString(16));
+        value = value.concat(element.toString(16).toUpperCase());
       });
       this.flags = this.flags.concat(value);
-      console.log(this.flags);
+      // console.log(this.flags);
       // ttl
       const ttl = this.ip.slice(8, 9)[0].toString(16);
-      console.log(ttl);
+      // console.log(ttl);
       this.ttl = this.ttl.concat(parseInt(ttl, 16).toString());
       // protocol
       let protocol = this.ip.slice(9, 10)[0].toString();
@@ -108,12 +108,12 @@ export class IpComponent implements OnInit {
       const checksum = this.ip.slice(10, 12);
       value = '';
       checksum.forEach(element => {
-        value = value.concat(element.toString(16));
+        value = value.concat(element.toString(16).toUpperCase());
       });
       this.hChecksum = this.hChecksum.concat(value);
       // Source IP
       const source = this.ip.slice(12, 16);
-      console.log(source);
+      // console.log(source);
       value = '';
       source.forEach(element => {
         value = value.concat(element.toString() + '.');
@@ -121,13 +121,13 @@ export class IpComponent implements OnInit {
       this.source = this.source.concat(value);
       // Destination IP
       const destination = this.ip.slice(16, 20);
-      console.log(source);
+      // console.log(source);
       value = '';
       destination.forEach(element => {
         value = value.concat(element.toString() + '.');
       });
       this.destination = this.destination.concat(value);
-      console.log(this.ip);
+      // console.log(this.ip);
       this.datagramContent = this.ip.slice(20, this.ip.length);
     }
   }
