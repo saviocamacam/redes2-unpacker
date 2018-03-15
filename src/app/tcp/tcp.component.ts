@@ -22,6 +22,20 @@ export class TcpComponent implements OnInit {
   padding: any;
   data: any;
 
+  urg: any;
+  ack: any;
+  psh: any;
+  rst: any;
+  syn: any;
+  fin: any;
+
+  maskurg: 0b00100000;
+  maskack: 0b00010000;
+  maskpsh: 0b00001000;
+  maskrst: 0b00000100;
+  masksyn: 0b00000010;
+  maskfin: 0b00000001;
+
   constructor() {
     this.resetValues();
   }
@@ -100,6 +114,7 @@ export class TcpComponent implements OnInit {
 
       // flags
       this.flags = this.flags.concat(this.tcp.slice(13, 14).toString());
+      this.ack = this.tcp.slice(13, 14)[0] || this.maskack;
 
       // window
       const window = this.tcp.slice(14, 16);

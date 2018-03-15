@@ -25,6 +25,11 @@ export class IpComponent implements OnInit {
   options: any;
   padding: any;
 
+  flagDF = false;
+  flagMF = false;
+  dfMask = 0b10000000;
+  mfMask = 0b01000000;
+
   datagramContent: Uint8Array;
 
   constructor() {
@@ -85,7 +90,8 @@ export class IpComponent implements OnInit {
       flags.forEach(element => {
         value = value.concat(element.toString(16));
       });
-      console.log(value);
+      this.flags = this.flags.concat(value);
+      console.log(this.flags);
       // ttl
       const ttl = this.ip.slice(8, 9)[0].toString(16);
       console.log(ttl);
