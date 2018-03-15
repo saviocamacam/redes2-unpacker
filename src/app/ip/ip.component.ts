@@ -71,7 +71,7 @@ export class IpComponent implements OnInit {
       tLength.forEach(element => {
         value = value.concat(element.toString(16));
       });
-      this.tLength = this.tLength.concat(': ' + parseInt(value, 16));
+      this.tLength = this.tLength.concat(parseInt(value, 16));
       // identification
       const identification = this.ip.slice(4, 6);
       value = '';

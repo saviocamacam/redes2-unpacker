@@ -48,6 +48,8 @@ export class UploaderComponent implements OnInit {
       console.log(this.array[i].toString(16));
     }
 
+    console.log(this.array.length);
+
     this.loading = true;
     // this.http.post('apiUrl', formModel)
     setTimeout(() => {

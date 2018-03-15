@@ -9,18 +9,18 @@ export class TcpComponent implements OnInit {
 
   @Input() tcp: Uint8Array;
 
-  sourcePort = 'sourcePort';
-  destinationPort = 'destinationPort';
-  sequence = 'sequence';
-  ackNumber = 'ackNumber';
-  offset = 'offset';
-  flags = 'flags';
-  window = 'window';
-  checksum = 'checksum';
-  urgent = 'urgent';
-  options = 'options';
-  padding = 'padding';
-  data = 'data';
+  sourcePort: any;
+  destinationPort: any;
+  sequence: any;
+  ackNumber: any;
+  offset: any;
+  flags: any;
+  window: any;
+  checksum: any;
+  urgent: any;
+  options: any;
+  padding: any;
+  data: any;
 
   constructor() {
     this.resetValues();
@@ -35,13 +35,13 @@ export class TcpComponent implements OnInit {
     this.sequence = 'Sequence: ';
     this.ackNumber = 'Acknowledgement number: ';
     this.offset = 'Offset: ';
-    this.flags = 'flags';
-    this.window = 'window';
-    this.checksum = 'checksum';
-    this.urgent = 'urgent';
-    this.options = 'options';
-    this.padding = 'padding';
-    this.data = 'data';
+    this.flags = 'Flags: ';
+    this.window = 'Window: ';
+    this.checksum = 'Checksum: ';
+    this.urgent = 'Urgent: ';
+    this.options = 'Options: ';
+    this.padding = 'Padding: ';
+    this.data = 'Data: ';
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
@@ -111,6 +111,39 @@ export class TcpComponent implements OnInit {
       console.log(value);
       this.window = this.window.concat(value);
       console.log(this.window);
+
+      // checksum
+      const checksum = this.tcp.slice(16, 18);
+      console.log(checksum);
+      value = '';
+      checksum.forEach(element => {
+        value = value.concat(element.toString(16));
+      });
+      console.log(value);
+      this.checksum = this.checksum.concat(value);
+      console.log(this.checksum);
+
+      // urgent
+      const urgent = this.tcp.slice(18, 20);
+      console.log(urgent);
+      value = '';
+      urgent.forEach(element => {
+        value = value.concat(element.toString(16));
+      });
+      console.log(value);
+      this.urgent = this.urgent.concat(value);
+      console.log(this.urgent);
+
+      // options
+      const options = this.tcp.slice(20, 32);
+      console.log(options);
+      value = '';
+      options.forEach(element => {
+        value = value.concat(element.toString(16));
+      });
+      console.log(value);
+      this.options = this.options.concat(value);
+      console.log(this.options);
 
     }
   }

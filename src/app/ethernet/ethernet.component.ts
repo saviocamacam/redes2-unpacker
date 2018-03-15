@@ -8,18 +8,27 @@ import { Component, OnInit, Input, SimpleChanges, SimpleChange } from '@angular/
 export class EthernetComponent implements OnInit {
 
   @Input() eth: Uint8Array;
-  destination: any = 'Endereço físico de destino';
-  source: any = 'Endereço físico de origem';
-  type: any = 'Versão IP';
+  destination: any;
+  source: any;
+  type: any;
   ipContent: Uint8Array;
 
-  constructor() { }
+  constructor() {
+    this.resetValues();
+  }
 
   ngOnInit() {
   }
 
+  resetValues() {
+    this.destination = 'Endereço físico de destino';
+    this.source = 'Endereço físico de origem';
+    this.type = 'Versão IP';
+  }
+
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnChanges(changes: SimpleChange) {
+    this.resetValues();
     if (this.eth) {
       const destination = this.eth.slice(0, 6);
       console.log(destination);
