@@ -32,14 +32,14 @@ export class TcpComponent implements OnInit {
   syn: any;
   fin: any;
 
-  maskcwr: 0b10000000;
-  maskecn: 0b01000000;
-  maskurg: 0b00100000;
-  maskack: 0b00010000;
-  maskpsh: 0b00001000;
-  maskrst: 0b00000100;
-  masksyn: 0b00000010;
-  maskfin: 0b00000001;
+  maskcwr = 0b10000000;
+  maskecn = 0b01000000;
+  maskurg = 0b00100000;
+  maskack = 0b00010000;
+  maskpsh = 0b00001000;
+  maskrst = 0b00000100;
+  masksyn = 0b00000010;
+  maskfin = 0b00000001;
 
   constructor() {
     this.resetValues();
@@ -97,7 +97,7 @@ export class TcpComponent implements OnInit {
       // console.log(sequence);
       value = '';
       sequence.forEach(element => {
-        value = value.concat(element.toString(16));
+        value = value.concat(element.toString(16).toUpperCase());
       });
       // console.log(value);
       this.sequence = this.sequence.concat(value);
@@ -108,19 +108,20 @@ export class TcpComponent implements OnInit {
       // console.log(ackNumber);
       value = '';
       ackNumber.forEach(element => {
-        value = value.concat(element.toString(16));
+        value = value.concat(element.toString(16).toUpperCase());
       });
       // console.log(value);
       this.ackNumber = this.ackNumber.concat(value);
       // console.log(this.ackNumber);
 
       // header length
+      const length = this.tcp.slice(12, 13)[0];
       // tslint:disable-next-line:no-bitwise
-      const hLength = (this.tcp.slice(12, 13)[0] >>> 4);
+      const hLength = (length >>> 4);
       this.hLength = this.hLength.concat(parseInt(hLength.toString(), 10));
 
       // flags
-      this.flags = this.flags.concat(this.tcp.slice(13, 14).toString());
+      this.flags = this.flags.concat(this.tcp.slice(12, 14)[0].toString(2));
 
       // tslint:disable-next-line:no-bitwise
       this.cwr = this.tcp.slice(13, 14)[0] & this.maskcwr;
@@ -146,7 +147,7 @@ export class TcpComponent implements OnInit {
       // console.log(window);
       value = '';
       window.forEach(element => {
-        value = value.concat(element.toString(16));
+        value = value.concat(element.toString(16).toUpperCase());
       });
       // console.log(value);
       this.window = this.window.concat(value);
@@ -157,7 +158,7 @@ export class TcpComponent implements OnInit {
       // console.log(checksum);
       value = '';
       checksum.forEach(element => {
-        value = value.concat(element.toString(16));
+        value = value.concat(element.toString(16).toUpperCase());
       });
       // console.log(value);
       this.checksum = this.checksum.concat(value);

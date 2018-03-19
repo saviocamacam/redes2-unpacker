@@ -26,8 +26,8 @@ export class UdpComponent implements OnInit {
     this.sourcePort = 'Source port: ';
     this.destinationPort = 'Destination port: ';
     this.length = 'Length: ';
-    this.checksum = 'checksum';
-    this.data = 'data';
+    this.checksum = 'Checksum: ';
+    this.data = 'Data: ';
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
@@ -72,7 +72,7 @@ export class UdpComponent implements OnInit {
       // console.log(checksum);
       value = '';
       checksum.forEach(element => {
-        value = value.concat(element.toString(16));
+        value = value.concat(element.toString(16).toUpperCase());
       });
       // console.log(value);
       this.checksum = this.checksum.concat(value);
@@ -83,7 +83,7 @@ export class UdpComponent implements OnInit {
       // console.log(data);
       value = '';
       data.forEach(element => {
-        value = value.concat(element.toString(16));
+        value = value.concat(String.fromCharCode(element));
       });
       // console.log(value);
       this.data = this.data.concat(value);

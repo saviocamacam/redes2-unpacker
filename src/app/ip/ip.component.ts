@@ -25,10 +25,10 @@ export class IpComponent implements OnInit {
   options: any;
   padding: any;
 
-  flagDF = false;
-  flagMF = false;
-  dfMask = 0b10000000;
-  mfMask = 0b01000000;
+  flagDF: any;
+  flagMF: any;
+  dfMask = 0b01000000;
+  mfMask = 0b00100000;
 
   datagramContent: Uint8Array;
 
@@ -46,14 +46,14 @@ export class IpComponent implements OnInit {
     this.tLength = 'Total Length: ';
     this.identification = 'Identification: ';
     this.flags = 'Flags: ';
-    this.fOffset = 'fOffset: ';
+    this.fOffset = 'Fragment offset: ';
     this.ttl = 'TTL: ';
     this.protocol = 'Protocolo: ';
     this.hChecksum = 'Header checksum: ';
     this.source = 'Source: ';
     this.destination = 'Destination: ';
-    this.options = 'options';
-    this.padding = 'padding';
+    this.options = 'Options: ';
+    this.padding = 'Padding: ';
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
@@ -91,6 +91,11 @@ export class IpComponent implements OnInit {
         value = value.concat(element.toString(16).toUpperCase());
       });
       this.flags = this.flags.concat(value);
+
+      // tslint:disable-next-line:no-bitwise
+      this.flagDF = this.ip.slice(6, 7)[0] & this.dfMask;
+      // tslint:disable-next-line:no-bitwise
+      this.flagMF = this.ip.slice(6, 7)[0] & this.mfMask;
       // console.log(this.flags);
       // ttl
       const ttl = this.ip.slice(8, 9)[0].toString(16);

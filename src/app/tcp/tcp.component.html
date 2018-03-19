@@ -38,10 +38,10 @@
   <div class="col-sm-8">
     {{options}}
   </div>
-  <div class="col-sm-4">
+  <div *ngIf="padding" class="col-sm-4">
     {{padding}}
   </div>
-  <div class="col-sm-12">
+  <div *ngIf="data" class="col-sm-12">
     {{data}}
   </div>
 </div>

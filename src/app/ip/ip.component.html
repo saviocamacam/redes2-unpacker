@@ -13,13 +13,15 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-sm-6">
+  <div class="col-sm-4">
     {{identification}}
   </div>
   <div class="col-sm-4">
     {{flags}}
+    <h6 *ngIf="flagDF != 0">flagDF</h6>
+    <h6 *ngIf="flagMF != 0">flagMF</h6>
   </div>
-  <div class="col-sm-1">
+  <div class="col-sm-4">
     {{fOffset}}
   </div>
 </div>
