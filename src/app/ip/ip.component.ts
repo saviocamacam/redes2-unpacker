@@ -25,8 +25,8 @@ export class IpComponent implements OnInit {
   options: any;
   padding: any;
 
-  flagDF: any;
-  flagMF: any;
+  flagDF: any = 0;
+  flagMF: any = 0;
   dfMask = 0b01000000;
   mfMask = 0b00100000;
 
